@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- layout for listview -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#fdfdfd">
+	
+	<!--
+		NOTICE
+		
+		At SlidingView class, It uses the .getChildAt(0) method
+		to obtain the ListView at the below. Therefore if you want
+		to add a view here, the code in SlidingView should be modified.
+		
+		
+		++++++++++<FrameLayout>+++++++++++++++++++
+		|paddingTop
+		| +++++++<ListView>++++++++++++++++++++
+		| |
+		| |
+		| |
+		| |
+		| |
+		| |
+	 -->
+	    
+	<ListView
+	    android:id="@+id/listview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:divider="@color/divider_color"
+	    
+	    android:paddingLeft="10dp"
+	    android:paddingRight="10dp"
+	    
+	    android:dividerHeight="1dp"
+	    android:drawSelectorOnTop="false"
+	    android:listSelector="@drawable/list_selector0" />
+	    	
+	
+	
+	<!--
+		progressbar 
+	 -->
+	<ProgressBar
+	    android:id="@+id/progressbar"
+	    style="@android:style/Widget.ProgressBar.Small"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"/>
+	
+	<ViewStub
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/stub_howto"
+	    android:inflatedId="@+id/howto_import"
+	    android:layout="@layout/viewstub_howto"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    
+	    android:layout_gravity="top" />
+
+</FrameLayout>
+

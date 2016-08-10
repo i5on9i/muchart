@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.muchart"
+    android:versionCode="5"
+    android:versionName="0.9.8.5">
+
+    <uses-sdk android:minSdkVersion="8"
+         android:targetSdkVersion="15" />
+    
+	<uses-permission android:name="android.permission.INTERNET" />
+	
+	<!--
+		android:theme="@android:style/Theme.NoTitleBar"
+		is needed to show the view without the titlebar
+		as the start of the app.
+		
+		requestWindowFeature(Window.FEATURE_NO_TITLE) can
+		be used but you can see the view with titlebar at
+		the start of the app.
+		
+		I also tried to use "@style/myTheme" instead of 
+		"@android:style/Theme.NoTitleBar" but it is not
+		work.
+	 -->
+    <application 
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@android:style/Theme.NoTitleBar">
+		
+		<!--- 
+			"singleTask" and "singleInstance" activities can only begin a task. 
+			They are always at the root of the activity stack. 
+			Moreover, the device can hold only one instance of the activity
+			at a time only one such task.
+			{@link http://developer.android.com/guide/topics/manifest/activity-element.html#lmode}
+		-->
+		<activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+			
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+    	    
+    </application>
+
+</manifest>

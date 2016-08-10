@@ -1,0 +1,18 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- @ref: http://ezmobile.wordpress.com/2009/04/05/android-themes/  -->
+    
+    <style name="AppTheme" 
+        parent="android:style/Theme.NoTitleBar">
+		<item name="android:windowNoTitle">true</item>
+	</style>
+
+    <style name="Theme_menu"
+        parent="@android:style/Theme.NoTitleBar.Fullscreen">
+	 
+	
+    <!-- your style modifications for Theme_menu here -->
+
+	</style>
+
+</resources>

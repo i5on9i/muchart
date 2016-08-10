@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:padding="@dimen/listitem_padding"
+	android:background="@drawable/list_selector1">
+	<!--
+		 Without LinearLayout and TextView height 50dp,
+		 ListItem height is not preserved,
+		 in other words, sizes of ListItems are different. 
+	
+	 -->
+	 <LinearLayout android:id="@+id/rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip">
+		 <TextView
+			android:id="@+id/ranktext"
+			android:layout_height="@dimen/listitem_height"
+			android:layout_width="fill_parent"
+			android:gravity="center_vertical"
+			android:textStyle="bold"
+			android:textSize="22dp"
+			android:text="1."
+			android:visibility="visible"
+			android:textColor="#FF000000"/>
+   
+	</LinearLayout>
+	
+	 
+	<!--  ListRow Left sied Thumbnail image -->
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_toRightOf="@+id/rank"
+        android:background="@drawable/noimage"
+        android:layout_marginRight="5dip">
+
+       <ImageView
+           android:id="@+id/list_image"
+           android:layout_width="60dip"
+           android:layout_height="60dip"
+           android:src="@drawable/noimage"/>
+	</LinearLayout>
+    
+    
+	<!-- Title Of Song-->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        
+        android:text="Rihanna Love the way lie"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="15dip"
+        android:textStyle="bold"/>
+    <!-- Artist Name -->
+    <TextView
+        android:id="@+id/artist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_toRightOf="@+id/thumbnail"
+        
+        android:textColor="#343434"
+        android:textSize="10dip"
+        android:layout_marginTop="1dip"
+        
+        android:text="Just gona stand there and ..." />
+        
+
+	    <!-- Album icon -->
+	     <ImageView
+			android:id="@+id/album_icon"
+	
+			android:gravity="center_vertical"
+			
+			android:layout_below="@id/artist"
+			android:layout_toRightOf="@+id/thumbnail"
+			
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			
+			android:paddingTop="3dp"
+		
+			android:src="@drawable/album"/>
+	    <!-- Album Name -->
+	    <TextView
+	        android:id="@+id/album"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+
+	        android:gravity="center_vertical"
+	        
+	        android:layout_below="@id/artist"
+			android:layout_toRightOf="@+id/album_icon"
+	        
+	        android:textColor="#343434"
+	        android:textSize="10dip"
+	        
+	        android:paddingLeft="2dp"
+	       	        
+	        android:text="Album_name" />
+
+</RelativeLayout>
+

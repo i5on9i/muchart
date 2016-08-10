@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="titletextcolor">#FFFF00</color>
+    <color name="translucent_blue">#127bb4</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="fading_color">#525522</color> <!-- dark gray -->
+    
+    
+    <color name="holo_orange_dark">#01060019</color>
+    <color name="holo_green_light">#01060014</color>
+    
+    
+    <color name="list_title">#FF3E83C9</color>
+    <color name="listitem1">#FFFFFFFF</color>
+    <color name="listitem2">#FFECF6FC</color>
+    <color name="pressed_color">#40ABFD</color>
+</resources>

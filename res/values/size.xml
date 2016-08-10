@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="listitem_padding">5dp</dimen>
+    <dimen name="listitem_height">55dp</dimen>
+    <dimen name="listitem_height_title">50dp</dimen>
+    <dimen name="listitem_margin_right_title">5dp</dimen>
+
+
+</resources>

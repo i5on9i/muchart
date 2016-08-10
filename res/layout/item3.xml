@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:padding="@dimen/listitem_padding"
+	android:background="@layout/titlebox_layerlist">
+	
+
+
+	<TextView
+		android:id="@+id/title"
+		android:layout_height="@dimen/listitem_height_title"
+		android:layout_width="wrap_content"
+		android:paddingRight="@dimen/listitem_margin_right_title"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentBottom="true"
+		android:gravity="center_vertical|center_horizontal"
+		android:text="text"
+		android:singleLine="true"
+		android:visibility="visible"
+		android:textStyle="normal"
+		android:textColor="#FFFFFFFF"
+		/>
+	
+	
+	
+	
+
+</RelativeLayout>

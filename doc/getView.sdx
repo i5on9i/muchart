@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram>
+<source><![CDATA[client1:Actor
+main:MainActivity[a]
+/lv:ListView[a]
+/ca:ChartAdapter[a]
+/imageloader:ImageLoader[a]
+/hashmap:WeakHashMap[a]
+/mcache:MemoryCache[a]
+/ptl:PhotoToLoad
+/pl1:PhotosLoader
+/pl2:PhotosLoader
+/exservice:ExecutorService[t]
+imageview:ImageView
+url:String
+bitmap:Bitmap
+/fc:FileCache[a]
+/cacheDir:File
+context:Context
+/mHandler:Handler
+/bd:BitmapDisplayer
+
+main:lv.new
+main:ca.new
+
+ca:imageloader.new
+imageloader:mHandler.new()
+imageloader:mcache.new
+imageloader:hashmap.new
+
+imageloader:fc.new
+[c:alt MEDIA_MOUNTED is true]
+	fc:cacheDir=cacheDir.new(getExternalStorageDirectory(),"LazyList")
+	--[else]
+	fc:File=context.getCacheDir()
+[/c]
+
+
+[c:opt cacheDir DOES NOT exists]
+	fc:cacheDir.mkdirs()
+[/c]
+
+(1)imageloader:exservice.new
+
+*1 imageloader
+  Executors.newFixedThreadPool(5)
+*1
+
+main:main.OnDraw()
+main:lv.OnDraw()
+lv:ca.getView()
+ca:imageloader.DisplayImage(imageview, url)
+imageloader:hashmap.put(imageview, url)
+imageloader:bitmap=mcache.get(url)
+
+
+[c:alt bitmap IS NOT null]
+	imageloader:imageview.setImageBitmap(bitmap)
+	--[else]
+	imageloader:imageloader.queuePhoto(url,imageView)
+	imageloader:ptl.new(url, imageView)
+	imageloader:pl1.new(ptl)
+	(2)imageloader:exservice.submit(pl1) : run
+	imageloader[1,0]:imageview.setImageResource(stub_id)
+[/c]
+
+*2 imageloader
+the both are indentical
+*2
+
+(2)client1:exservice.excute()
+exservice[,1]:>pl1.run()
+
+pl1[,2]:thumbnail=pl1.getBitmap(url)
+pl1[,2]:file=fc.getFile(url)
+[c:alt]
+	pl1[0,2]:thumbnail=fc.decodeFile(file)
+	--[else]
+	pl1[,2]:thumbnail = getFromTheWeb(url)
+[/c]
+pl1[1,2]:mcache.put(url, thumbnail)
+pl1[,2]:bd.new(thumbnail, photoload)
+pl1[,2]:mHandler.post(bd);
+
+client1:mHandler.excute()
+mHandler[,2]:>bd.run()
+
+
+bd[,4]:bool=bd.imageViewReused(pl)
+bd[,4]:url=hashmap.get(pl.imageView)
+[c:alt url == pl.url]
+	bd[,4]:bool = true
+--[else]
+	bd[,4]:bool = false
+[/c]
+
+[c:alt bitmap exists]
+	bd[1,4]:bd.pl.imageView.setImageBitmap()
+--[else]
+	bd[1,4]:bd.pl.imageView.setImageResource()
+[/c]
+
+
+
+
+					
+					
+]]></source>
+<configuration>
+<property name="activationBarBorderThickness" value="1"/>
+<property name="actorWidth" value="25"/>
+<property name="arrowColor" value="-14803256"/>
+<property name="arrowSize" value="6"/>
+<property name="arrowThickness" value="1"/>
+<property name="colorizeThreads" value="true"/>
+<property name="destructorWidth" value="30"/>
+<property name="explicitReturns" value="false"/>
+<property family="Dialog" name="font" size="12" style="0"/>
+<property name="fragmentBorderThickness" value="2"/>
+<property name="fragmentEdgeColor" value="-16751616"/>
+<property name="fragmentLabelBgColor" value="-36"/>
+<property name="fragmentMargin" value="8"/>
+<property name="fragmentPadding" value="10"/>
+<property name="fragmentTextPadding" value="3"/>
+<property name="glue" value="10"/>
+<property name="headHeight" value="35"/>
+<property name="headLabelPadding" value="5"/>
+<property name="headWidth" value="100"/>
+<property name="initialSpace" value="10"/>
+<property name="labeledBoxBgColor" value="-76"/>
+<property name="leftMargin" value="5"/>
+<property name="lifelineThickness" value="1"/>
+<property name="lineWrap" value="false"/>
+<property name="lowerMargin" value="5"/>
+<property name="mainLifelineWidth" value="8"/>
+<property name="messageLabelSpace" value="3"/>
+<property name="messagePadding" value="6"/>
+<property name="noteBgColor" value="-76"/>
+<property name="noteBorderThickness" value="1"/>
+<property name="noteMargin" value="6"/>
+<property name="notePadding" value="6"/>
+<property name="opaqueMessageText" value="false"/>
+<property name="returnArrowVisible" value="true"/>
+<property name="rightMargin" value="5"/>
+<property name="selfMessageHorizontalSpace" value="15"/>
+<property name="separatorBottomMargin" value="8"/>
+<property name="separatorTopMargin" value="15"/>
+<property name="shouldShadowParticipants" value="true"/>
+<property name="slackMode" value="false"/>
+<property name="spaceBeforeActivation" value="2"/>
+<property name="spaceBeforeAnswerToSelf" value="10"/>
+<property name="spaceBeforeConstruction" value="6"/>
+<property name="spaceBeforeSelfMessage" value="7"/>
+<property name="subLifelineWidth" value="6"/>
+<property name="tc0" value="-1118482"/>
+<property name="tc1" value="-256"/>
+<property name="tc2" value="-65536"/>
+<property name="tc3" value="-16776961"/>
+<property name="tc4" value="-16711936"/>
+<property name="tc5" value="-4144960"/>
+<property name="tc6" value="-65281"/>
+<property name="tc7" value="-14336"/>
+<property name="tc8" value="-20561"/>
+<property name="tc9" value="-12566464"/>
+<property name="threadNumbersVisible" value="false"/>
+<property name="threaded" value="true"/>
+<property name="upperMargin" value="5"/>
+<property name="verticallySplit" value="true"/>
+</configuration>
+</diagram>

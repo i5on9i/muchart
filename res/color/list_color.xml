@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	ref:
+	http://developer.android.com/guide/topics/resources/color-list-resource.html 
+ -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    
+    <!-- not selected and not pressed -->
+	<item 
+	 android:state_selected="false"
+	    android:state_pressed="false" 
+	    android:color="#ffff0000"/>
+	
+	<!-- pressed -->
+	<item android:state_pressed="true" 
+	    android:color="#ff0000ff" />
+	
+	<!-- selected -->
+	<item android:state_selected="true"
+	 	android:state_pressed="false" 
+	    android:color="#ff000000" />
+	
+	<!-- 
+		default should be put at the last
+		because the first meet is used first.
+	-->
+	<!-- default -->
+	<item android:color="#00000000"/> 
+</selector>
